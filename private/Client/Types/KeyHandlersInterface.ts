@@ -1,4 +1,4 @@
-import { KeyEvent } from "./KeyEvent.js"
+import { KeyEvent } from "../Game/Engine/Events/KeyEvent.js"
 
 export type KeyFunc = ( e: KeyEvent ) => void 
 

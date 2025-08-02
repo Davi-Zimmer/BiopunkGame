@@ -8,7 +8,7 @@ const createWindowIn = ( path:string ) => {
         height: 400,
         resizable: true,
         webPreferences: {
-
+                
         }
     })
 
