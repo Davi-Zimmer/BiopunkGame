@@ -6,7 +6,11 @@ interface BaseObjectInterface extends RectProps {
     
 }
 
+let frame = 0
+
 export class BaseObject extends Rect {
+
+    private facingAtRight: boolean = false
 
     constructor( { x, y, w, h, z, scale }: BaseObjectInterface ) {
 
@@ -20,6 +24,12 @@ export class BaseObject extends Rect {
     }
 
     render( s:p5 ){
+
+        s.fill( '#8700ff' )
+
+        const coords = Rect.RectToList( this.extractRect() )
+
+        s.rect( ...coords )
 
     }
 }

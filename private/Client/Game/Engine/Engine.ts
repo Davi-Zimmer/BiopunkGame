@@ -1,3 +1,4 @@
+//import { WEBGL } from "p5"
 import { p5 } from "../../Types/P5.js"
 import Game from "../Game.js"
 
@@ -34,7 +35,7 @@ class _Engine {
 
     private configCanvas( s: p5 ){
         
-        s.resizeCanvas( innerWidth, innerHeight, false )
+        s.createCanvas( innerWidth, innerHeight, s.WEBGL)
 
         EventManager.resizeEvent( () => {
             s.resizeCanvas( innerWidth, innerHeight, true )
