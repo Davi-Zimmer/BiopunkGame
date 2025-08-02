@@ -1,7 +1,8 @@
 import { p5 } from "../../Types/P5.js"
+import Game from "../Game.js"
 
 import { createRenderer } from "../P5/P5Funcs.js"
-import EventManager from "./EventManager.js"
+import EventManager from "./Events/EventManager.js"
 
 class _Engine {
 
@@ -9,9 +10,11 @@ class _Engine {
 
     public static GetInstance(){
 
-        if( !this.Instance ) this.Instance = new _Engine
+        if( !this.Instance ) this.Instance = new _Engine()
         return this.Instance
     }
+
+    public game = new Game()
 
     private constructor() {
 
@@ -20,11 +23,10 @@ class _Engine {
         this.setup()
     }
 
-
     private configureP5() {
         
         createRenderer( (s) => this.configCanvas(s), (s) => {
-            this.update(s)
+            this.game.update(s)
             this.systemUpdate()
         } )
         
@@ -33,7 +35,10 @@ class _Engine {
     private configCanvas( s: p5 ){
         
         s.resizeCanvas( innerWidth, innerHeight, false )
-        s.background( 0 )
+
+        EventManager.resizeEvent( () => {
+            s.resizeCanvas( innerWidth, innerHeight, true )
+        })
 
         EventManager.addEvents( s.canvas )
 
@@ -45,19 +50,10 @@ class _Engine {
         EventManager.executeKeyPressed()
     }
 
-
     private setup(){
    
     }
-
-
-    private update( s: p5 ) {
-
-        s.arc( 50, 50, 50, 50, 0, Math.PI * 2 )
-
-
-    }
-    
+   
 
 
 }
@@ -68,5 +64,6 @@ const Engine = _Engine.GetInstance()
 export default Engine
 
 // @ts-ignore
-window.a = EventManager
-console.log('AAAAAAAAAAAAAAAAAAAAAAA')
+window.EventManager = EventManager
+// @ts-ignore
+window.Engine = Engine

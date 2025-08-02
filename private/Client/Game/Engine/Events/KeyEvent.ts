@@ -1,4 +1,4 @@
-import { KeyEventInterface } from "./KeyEventInterface.js"
+import { KeyEventInterface } from "../../../Types/KeyEventInterface.js"
 
 export class KeyEvent {
     private key: string
