@@ -1,11 +1,25 @@
+import { Color } from "../Game/P5/Color.js"
+
 export interface p5 {
     constructor: ( sketch?: ( p: p5 ) => void ) => void
 
-    Color: any
     Image: any
     Vector: any
     Renderer: any
+    Color: any
+    WEBGL: any
 
+
+    color( r: number, g: number, b: number, a?:number ) : Color
+    color( hex: string ) : Color
+
+
+    fill( color: Color ) : void
+    fill( colorHex: string ) : void
+
+
+    rect( x: number, y: number, w: number, h: number ) : void
+    
     canvas: HTMLCanvasElement
 
     background (color: p5['Color']) : void

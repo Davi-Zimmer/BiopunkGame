@@ -1,5 +1,6 @@
 import { RectInterface } from "../../../Types/RectInterface.js"
 import { RectProps } from "../../../Types/RectProps.js"
+import { SimpleRect } from "../../../Types/SimpleRect.js"
 
 export default class Rect {
 
@@ -9,7 +10,7 @@ export default class Rect {
         this.position = { x, y, w, h, z, scale }
     }
 
-    protected extractRect(){
+    public extractRect(){
         const { x, y, w, h, z, scale } = this.position  
         return {
             x: x,
@@ -19,7 +20,7 @@ export default class Rect {
         }
     }
 
-    protected getMiddle = () => {
+    public getMiddle = () => {
         const { x, y, w, h } = this.extractRect()
 
         return {
@@ -29,19 +30,23 @@ export default class Rect {
 
     }
 
-    protected getX         = () => this.position.x 
-    protected getY         = () => this.position.y
-    protected getW         = () => this.position.w
-    protected getH         = () => this.position.h
-    protected getZ         = () => this.position.z
-    protected getScale     = () => this.position.scale
-    protected getPositions = () => this.position 
+    public getX         = () => this.position.x 
+    public getY         = () => this.position.y
+    public getW         = () => this.position.w
+    public getH         = () => this.position.h
+    public getZ         = () => this.position.z
+    public getScale     = () => this.position.scale
+    public getPositions = () => this.position
 
-    protected setX     = ( x: number )    => this.position.x = x
-    protected setY     = ( y: number )    => this.position.y = y
-    protected setW     = ( w: number )    => this.position.w = w
-    protected setH     = ( h: number )    => this.position.h = h
-    protected setZ     = ( z: number )    => this.position.z = z
-    protected setScale = ( scale: number) => this.position.scale = scale
+    public setX     = ( x: number )    => this.position.x = x
+    public setY     = ( y: number )    => this.position.y = y
+    public setW     = ( w: number )    => this.position.w = w
+    public setH     = ( h: number )    => this.position.h = h
+    public setZ     = ( z: number )    => this.position.z = z
+    public setScale = ( scale: number) => this.position.scale = scale
 
+
+    static ListToRect = ( x: number, y: number, w: number, h: number) => ({ x, y, w, h } as SimpleRect) 
+
+    static RectToList = ( { x, y, w, h }: SimpleRect ) => ([ x, y, w, h ] as [ number, number, number, number ]) 
 }
