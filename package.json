@@ -1,0 +1,20 @@
+{
+  "name": "biopunk-game",
+  "version": "1.0.0",
+  "main": "dist/Server/Main.js",
+  "scripts": {
+    "copyPages": "xcopy /E /I /Y private\\Client\\Page\\ dist\\Client\\Page",
+    "init": "tsc && npm run copyPages && electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "electron": "^37.2.5",
+    "express": "^5.1.0",
+    "p5": "^2.0.3",
+    "typescript": "^5.9.2"
+  }
+}
